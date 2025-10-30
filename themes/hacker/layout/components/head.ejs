@@ -1,0 +1,120 @@
+<head>
+  <meta charset="utf-8">
+  <%
+    // Build a default title as fallback
+    var parts = [];
+    if (page.current > 1) {
+      parts.push(__('page', page.current));
+    }
+    if (page.title) {
+      parts.push(page.title);
+    }
+    if (page.category) {
+      parts.push(page.category);
+    }
+    if (page.tag) {
+      parts.push(page.tag);
+    }
+    if (page.archive){
+      if (page.year) {
+        parts.push(__('archive_b', page.year + (page.month ? '/' + page.month : '')));
+      } else {
+        parts.push(__('archive_a'));
+      }
+    }
+    parts.push(config.title);
+    if (config.subtitle) {
+      parts.push(config.subtitle);
+    }
+    var defaultTitle = parts.join(' | ');
+
+    // Custom tab titles
+    var right = (config.author || config.title || '');
+    var left = null;
+    // Home page (our custom home layout)
+    if (page.layout === 'home') {
+      left = 'home';
+    }
+    // Blog listing (has page.posts when listing posts)
+    else if (page.posts) {
+      left = 'blogs';
+    }
+    // Projects page (match title or path)
+    else if ((page.title && String(page.title).toLowerCase() === 'projects') || (page.path && page.path.indexOf('projects') === 0)) {
+      left = 'projects';
+    }
+
+    var finalTitle = left ? (left + '::' + right) : defaultTitle;
+  %>
+  <title><%= finalTitle %></title>
+
+  <% if (config.author){ %>
+  <meta name="author" content="<%= config.author %>">
+  <% } %>
+
+  <% if (page.description){ %>
+  <meta name="description" content="<%= page.description %>">
+  <% } else if (config.description){ %>
+  <meta name="description" content="<%= config.description %>">
+  <% } else if (page.excerpt){ %>
+  <meta name="description" content="<%= strip_html(page.excerpt).replace(/^\s*/, '').replace(/\s*$/, '') %>">
+  <% } else if (page.content){ %>
+  <meta name="description" content="<%= strip_html(page.content).replace(/^\s*/, '').replace(/\s*$/, '').substring(0, 150) %>">
+  <% } %>
+
+  <% if (page.keywords){ %>
+  <meta name="keywords" content="<%= page.keywords %>,<%= config.keywords %>">
+  <% } else if (config.keywords){ %>
+  <meta name="keywords" content="<%= config.keywords %>">
+  <% } else if (page.tags){%>
+  <%
+    var keywords = [];
+    page.tags.forEach(function(tag){
+      keywords.push(tag.name);
+    });
+  %>
+  <meta name="keywords" content="<%= keywords.join(",") %>">
+  <% } %>
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <% if (page.title){ %><meta property="og:title" content="<%= page.title %>"/><% } %>
+
+  <meta property="og:site_name" content="<%= config.title %>"/>
+
+  <% if(page.cover) { %>
+  <meta property="og:image" content="<%= page.cover %>" />
+  <% } else if(config.cover) { %>
+  <meta property="og:image" content="<%= config.cover %>"/>
+  <% } else { %>
+  <meta property="og:image" content="<%- config.root %>favicon.ico"/>
+  <% } %>
+
+  <link href="<%- config.root %>favicon.ico" rel="icon">
+  <link rel="alternate" href="<% if (theme.rss){ %><%- theme.rss %><% } else { %><%- config.root %>atom.xml<% } %>" title="<%= config.title %>" type="application/atom+xml">
+  <!-- Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Base theme CSS -->
+  <link rel="stylesheet" href="<%- config.root %>css/style.css" media="screen" type="text/css">
+
+  <!-- Custom overrides (fonts, dark mode, landing tweaks) -->
+  <link rel="stylesheet" href="<%- config.root %>css/custom.css" media="screen" type="text/css">
+
+  <!-- Theme preference: set before paint -->
+  <script>
+    (function() {
+      try {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = stored || (prefersDark ? 'dark' : 'light');
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
+  <script src="<%- config.root %>js/dark-toggle.js" defer></script>
+</head>

@@ -1,0 +1,16 @@
+<section class="topics">
+  <h2>Topics</h2>
+  <% var tags = (site.tags && site.tags.length) ? site.tags.toArray() : []; %>
+  <% if (tags.length) { %>
+    <% tags.sort(function(a,b){ return a.name.localeCompare(b.name); }); %>
+    <ul class="topics-list">
+      <% tags.forEach(function(tag){ %>
+        <li>
+          <a href="<%- url_for(tag.path) %>"><%= tag.name %> (<%= tag.length %>)</a>
+        </li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>No topics yet.</p>
+  <% } %>
+</section>

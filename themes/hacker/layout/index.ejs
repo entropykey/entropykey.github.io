@@ -1,0 +1,13 @@
+<section class="blog-title-list">
+  <h2>Blogs</h2>
+  <ul>
+    <% page.posts.each(function(item){ %>
+      <li>
+        <a href="<%- url_for(item.path) %>"><%= item.title %></a>
+      </li>
+    <% }); %>
+  </ul>
+
+</section>
+
+<%- partial('components/pagination') %>

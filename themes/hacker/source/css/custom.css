@@ -1,0 +1,200 @@
+
+/* Ensure orange brand pill across pages with Inter Bold */
+header .site-branding .site-title a {
+  background-color: #f03838 !important;
+  color: #fff !important;
+  font-weight: 700 !important; /* Inter Bold */
+}
+body.landing header .site-branding .site-title a {
+  background-color: #f03838 !important;
+  color: #fff !important;
+  padding: 0 1rem !important;
+  height: 3rem !important;
+  line-height: 3rem !important;
+  font-weight: 700 !important;
+}
+
+
+/* Fixed footer at bottom of screen */
+footer.site-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  line-height: 1.8;
+  padding: 0.6rem 1rem;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  z-index: 100;
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #666666;
+  --link: #0a84ff;
+  --border: #e5e7eb;
+}
+html.dark {
+  --bg: #0b0b0b;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --link: #66aaff;
+  --border: #1f2937;
+}
+
+/* Base font + colors (override theme defaults) */
+html, body {
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif !important;
+  font-weight: 600 !important; /* Inter SemiBold across the site */
+  background: var(--bg) !important;
+  color: var(--text) !important;
+}
+/* Theme container backgrounds */
+body .blog { background-color: var(--bg) !important; }
+body .blog .content { background-color: transparent !important; padding-bottom: 70px; }
+
+/* Ensure header uses Inter */
+.site-branding { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif !important; }
+.site-title a { font-weight: 700 !important; /* Inter Bold for brand */ }
+
+/* Landing page: semi-bold title */
+body.landing .site-title a,
+.landing .landing-title { font-weight: 600; /* Inter SemiBold */ }
+/* Landing page: minimal brand style (no red pill) */
+body.landing header .site-branding .site-title a {
+  background: transparent !important;
+  color: var(--text) !important;
+  padding: 0 !important;
+  height: auto !important;
+  line-height: normal !important;
+}
+body.landing header .site-branding .site-title a:hover { padding: 0 !important; }
+body.landing header .site-branding .site-description { color: var(--muted) !important; }
+
+/* Links and borders */
+a { color: var(--link); }
+hr, .post, .article, .site-footer, .site-navigation, .site-branding { border-color: var(--border); }
+
+/* Dark-specific content overrides */
+html.dark article .article-title,
+html.dark article .article-title a { color: var(--text) !important; }
+html.dark article .article-top-meta,
+html.dark article .article-top-meta a { color: var(--muted) !important; }
+html.dark article .article-excerpt,
+html.dark article .article-content { color: var(--text) !important; }
+html.dark article:not(:first-child):before { background-color: var(--border) !important; }
+html.dark footer.site-footer,
+html.dark footer.site-footer .site-info { color: var(--muted) !important; }
+
+/* Code blocks / gists */
+html.dark figure.highlight,
+html.dark .entry .gist { background: #111 !important; border-color: var(--border) !important; color: var(--text) !important; }
+html.dark figure.highlight .gutter { color: var(--muted) !important; border-right-color: var(--border) !important; }
+html.dark figure.highlight .code { color: var(--text) !important; }
+
+/* Theme toggle button */
+.theme-toggle {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+  line-height: 1;
+}
+.theme-toggle .sun { display: inline; }
+.theme-toggle .moon { display: none; }
+html.dark .theme-toggle .sun { display: none; }
+html.dark .theme-toggle .moon { display: inline; }
+
+/* Home intro */
+.home-intro {
+  max-width: 720px;
+  margin: 6rem auto;
+  text-align: center;
+  padding: 0 1rem;
+}
+.home-intro .home-title {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+.home-intro .home-about {
+  font-size: 1.8rem;
+  color: var(--text);
+}
+
+/* Home page content rendered from index.md */
+.home-intro .home-body {
+  max-width: 900px;
+  margin: 2rem auto;
+  text-align: left; /* left-align like a terminal */
+}
+/* Terminal-like code block styling */
+.home-intro .home-body figure.highlight {
+  background: #0d1117; /* dark terminal bg */
+  color: #e5e7eb;
+  border: 1px solid #1f2937;
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+  font-size: 1.5rem; /* bigger text */
+  line-height: 1.6;
+  overflow: auto;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.home-intro .home-body figure.highlight table { width: 100%; }
+.home-intro .home-body figure.highlight .gutter {
+  display: none; /* hide line numbers in terminal block */
+}
+.home-intro .home-body figure.highlight .code {
+  color: #e5e7eb;
+  border-left: none !important;
+  padding-left: 0 !important;
+}
+.home-intro .home-body figure.highlight .code { color: #e5e7eb; }
+
+/* Keep links below */
+.home-intro .home-links { margin-top: 2rem; }
+.home-intro .btn {
+  display: inline-block;
+  margin: 0 .5rem;
+  padding: .6rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+}
+.home-intro .btn:hover { color: var(--link); }
+
+/* Blog index: title-only list with larger titles */
+.blog-title-list {
+  max-width: 770px;
+  margin: 4rem auto;
+  padding: 0 1rem;
+}
+.blog-title-list h2 {
+  font-size: 2rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+.blog-title-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+.blog-title-list li {
+  margin: 1.2rem 0;
+}
+.blog-title-list a {
+  font-size: 3.0rem;
+  line-height: 1.2;
+  color: var(--text);
+  display: inline-block;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+.blog-title-list a:hover {
+  color: var(--link);
+}

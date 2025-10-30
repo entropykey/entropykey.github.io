@@ -1,0 +1,11 @@
+menu:
+  Home: /
+  Blogs: /blog
+  Projects: /projects
+
+# disqus comment
+disqus: false
+disqus_shortname: 
+
+# google analytics
+googleTrackId: 
