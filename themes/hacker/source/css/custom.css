@@ -93,6 +93,11 @@ html.dark figure.highlight,
 html.dark .entry .gist { background: #111 !important; border-color: var(--border) !important; color: var(--text) !important; }
 html.dark figure.highlight .gutter { color: var(--muted) !important; border-right-color: var(--border) !important; }
 html.dark figure.highlight .code { color: var(--text) !important; }
+/* Light theme code blocks */
+html:not(.dark) figure.highlight,
+html:not(.dark) .entry .gist { background: #f8fafc !important; border-color: var(--border) !important; color: var(--text) !important; }
+html:not(.dark) figure.highlight .gutter { color: var(--muted) !important; border-right-color: var(--border) !important; }
+html:not(.dark) figure.highlight .code { color: var(--text) !important; }
 
 /* Theme toggle button */
 .theme-toggle {
@@ -134,9 +139,9 @@ html.dark .theme-toggle .moon { display: inline; }
   text-align: left; /* left-align like a terminal */
 }
 /* Terminal-like code block styling */
-.home-intro .home-body figure.highlight {
+html.dark .home-intro .home-body figure.highlight {
   background: #0d1117; /* dark terminal bg */
-  color: #e5e7eb;
+  color: var(--text);
   border: 1px solid #1f2937;
   border-radius: 10px;
   padding: 1.2rem 1.4rem;
@@ -145,16 +150,27 @@ html.dark .theme-toggle .moon { display: inline; }
   overflow: auto;
   box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
+/* Light theme variant for home intro code block */
+html:not(.dark) .home-intro .home-body figure.highlight {
+  background: #f8fafc; /* light code bg */
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  overflow: auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
 .home-intro .home-body figure.highlight table { width: 100%; }
 .home-intro .home-body figure.highlight .gutter {
   display: none; /* hide line numbers in terminal block */
 }
 .home-intro .home-body figure.highlight .code {
-  color: #e5e7eb;
+  color: var(--text);
   border-left: none !important;
   padding-left: 0 !important;
 }
-.home-intro .home-body figure.highlight .code { color: #e5e7eb; }
 
 /* Keep links below */
 .home-intro .home-links { margin-top: 2rem; }
