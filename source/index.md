@@ -11,6 +11,7 @@ email: "ntropykey@gmail.com"
 #!/bin/bash
 user="entropykey"
 alias ntrop="entropykey"
+alias naf="entropykey"
 
 fields=(cybersecurity dfir linux networking)
 for f in "${fields[@]}"; do
