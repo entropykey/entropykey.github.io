@@ -4,7 +4,7 @@ date: 2025-10-29
 ---
 
 
-In this blog i'll explain how to properly wipe data off your android phone before you sell it or give it to anyone else.
+**In this blog i'll explain how to properly wipe data off your android phone before you sell it or give it to anyone else.**
 
 ## Prerequisites
 -  A linux pc with `adb`
@@ -12,10 +12,10 @@ In this blog i'll explain how to properly wipe data off your android phone befor
 - Backup your stuff
 - Have your phone charged above 50%
 
-# Remove accounts & disable lock screen (preventing FRP)
+## Remove accounts & disable lock screen (preventing FRP)
 Remove the google accounts and the OEM accounts. Disable the lock screen and set it to none.
 
-# Check encryption state
+## Check encryption state
 
 ```bash
 adb shell getprop ro.crypto.state
@@ -23,7 +23,7 @@ adb shell getprop ro.crypto.state
 if the output says `encrypted` = good to go
 if the output says `unencrypted` = try to enable it if available in settings
 
-# Fill internal storage and then nuke it
+## Fill internal storage and then nuke it
 We have to overwrite free space on the user partition by copying large files into `/sdcard`, then delete them.
 - random file set on linux
 ```bash
@@ -46,13 +46,13 @@ while true; do
   fi
 done
 ```
-# Show free space
+## Show free space
 ``` bash
 adb shell df -h /sdcard || true
 ```
 don't forget to use `chmod +x` to make it executable
 
-# Remove the junk now
+## Remove the junk now
 remove the files we just pushed
 ```bash
 adb shell rm /sdcard/bigfile_*.bin
@@ -65,7 +65,7 @@ adb reboot
 
 Now perform a factory reset how you normally would and you're all done.
 
-# Jackpot 
+## Jackpot 
 > Lucky for you i have an automated script for that.
 > You can find the script [here](https://github.com/entropykey/factryreset)
 
