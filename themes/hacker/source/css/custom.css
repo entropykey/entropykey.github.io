@@ -91,13 +91,13 @@ html.dark footer.site-footer .site-info { color: var(--muted) !important; }
 /* Code blocks / gists */
 html.dark figure.highlight,
 html.dark .entry .gist { background: #111 !important; border-color: var(--border) !important; color: var(--text) !important; }
-html.dark figure.highlight .gutter { color: var(--muted) !important; border-right-color: var(--border) !important; }
-html.dark figure.highlight .code { color: var(--text) !important; }
+html.dark figure.highlight .gutter { display: none !important; }
+html.dark figure.highlight .code { color: var(--text) !important; border-left: none !important; padding-left: 0 !important; }
 /* Light theme code blocks */
 html:not(.dark) figure.highlight,
 html:not(.dark) .entry .gist { background: #f8fafc !important; border-color: var(--border) !important; color: var(--text) !important; }
-html:not(.dark) figure.highlight .gutter { color: var(--muted) !important; border-right-color: var(--border) !important; }
-html:not(.dark) figure.highlight .code { color: var(--text) !important; }
+html:not(.dark) figure.highlight .gutter { display: none !important; }
+html:not(.dark) figure.highlight .code { color: var(--text) !important; border-left: none !important; padding-left: 0 !important; }
 
 /* Theme toggle button */
 .theme-toggle {
