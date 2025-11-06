@@ -1,12 +1,12 @@
 
 /* Ensure orange brand pill across pages with Inter Bold */
 header .site-branding .site-title a {
-  background-color: #f03838 !important;
+  background-color: #F2545B !important;
   color: #fff !important;
   font-weight: 700 !important; /* Inter Bold */
 }
 body.landing header .site-branding .site-title a {
-  background-color: #f03838 !important;
+  background-color: #F2545B !important;
   color: #fff !important;
   padding: 0 1rem !important;
   height: 3rem !important;
